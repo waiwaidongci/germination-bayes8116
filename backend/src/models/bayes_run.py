@@ -1,4 +1,4 @@
-from sqlalchemy import Text,JSON,ForeignKey,Double,UniqueConstraint
+from sqlalchemy import Text,JSON,ForeignKey,Double,Integer,UniqueConstraint
 from sqlalchemy.orm import Mapped,mapped_column
 from ..config.database import Base
 from ..utils.clock import now
@@ -9,6 +9,8 @@ class BayesRun(Base):
     study_id:Mapped[int]=mapped_column(ForeignKey("germination_studies.id"))
     threshold:Mapped[float]=mapped_column(Double)
     future_n:Mapped[int]
+    bootstrap_seed:Mapped[int]=mapped_column(Integer,nullable=True,default=None)
+    bootstrap_reps:Mapped[int]=mapped_column(Integer,nullable=True,default=None)
     input_snapshot:Mapped[dict]=mapped_column(JSON)
     status:Mapped[str]=mapped_column(default="queued")
     result:Mapped[dict]=mapped_column(JSON,default=dict)

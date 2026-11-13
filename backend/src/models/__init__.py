@@ -4,4 +4,5 @@ from .study import GerminationStudy
 from .lot import SeedLot
 from .count import LotCount
 from .bayes_run import BayesRun
+from .bootstrap_fit import BootstrapFit
 from .note import SamplingNote
